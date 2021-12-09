@@ -1,3 +1,10 @@
+import requests
+
+url = 'https://raw.githubusercontent.com/Joz84/planet/master/planet.html'
+response = requests.get(url).content
+
+print(response)
+
 def coco():
     params = {
         'image': 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/332937/pluto.jpg',
@@ -24,5 +31,5 @@ def coco():
         
     return ' '.join(root_infos)
 
-print(coco())
+# print(coco())
     
