@@ -1,0 +1,81 @@
+<style>
+    :root { 
+    --image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/332937/pluto.jpg); 
+    --inclinaison: rotate(58.3deg); 
+    --rotation-speed: 16.1; 
+    --size: 300px; 
+    --color: rgba(250, 0, 0, 0.4); 
+    --shadow: -70px; 
+    --sun-color: rgba(250, 212, 0, 0.4); 
+    --sun-intensity: 50px;
+    }
+</style>
+
+
+<style>       
+    @keyframes planetRotate {
+        0% {
+        background-position: 0% center;
+        }
+        100% {
+        background-position: -200% center;
+        }
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+    }
+    
+    .card--neptune .planet__atmosphere {
+        box-shadow: inset var(--sun-intensity) 0px 50px -2px var(--sun-color), inset var(--shadow) 0px 50px 0px black, -5px 0px 10px -4px var(--color);
+    }
+    .card--neptune .planet__surface {
+        background-image: var(--image);
+        transform: var(--inclinaison) scale(1.2);
+        animation: planetRotate calc(var(--rotation-speed) * 0.1s) linear infinite;
+    }
+    .card--neptune .card__planet::before {
+        transform: var(--inclinaison) scale(1.2);
+        border-color: grey;
+        color: grey;
+    }
+    
+    .card__planet::before {
+        content: "";
+        position: absolute;
+        height: var(--size);
+        z-index: -2;
+        left: 50%;
+        top: 0%;
+        border-left: 1px dashed rgba(255, 255, 255, 0.25);
+    }
+    
+    .planet__atmosphere {
+        height: var(--size);
+        width: var(--size);
+        position: relative;
+        background: var(--color);
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .planet__surface {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: -1;
+        background-size: cover;
+    }
+    
+</style>
+
+<article class='card card--neptune'>
+    <div class="card__planet">
+        <div class="planet__atmosphere">
+            <div class="planet__surface"></div>
+        </div>
+    </div>
+</article>
