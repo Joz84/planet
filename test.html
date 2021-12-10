@@ -1,4 +1,4 @@
-<style>:root { --image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/332937/pluto.jpg"); --tilt: rotate(22deg); --rotation-speed: 84; --size: 100.0px; --color: rgba(65, 69, 171, 0.4); --shadow: -70.0px; --sun-color: rgba(240, 249, 33, 0.4); --sun-intensity: 70.0px;}</style><style>
+<style>:root { --image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/332937/pluto.jpg"); --tilt: rotate(29deg); --rotation-speed: 136; --size: 100.0px; --color: rgba(243, 198, 58, 0.4); --shadow: -50.0px; --sun-color: rgba(240, 249, 33, 0.4); --sun-intensity: 90.0px;}</style><style>
  @keyframes planetRotate {
         0% {
         background-position: 0% center;
@@ -20,11 +20,11 @@
     }
     .card--neptune .planet__surface {
         background-image: var(--image);
-        transform: var(--inclinaison) scale(1.2);
+        transform: var(--tilt) scale(1.2);
         animation: planetRotate calc(var(--rotation-speed) * 0.1s) linear infinite;
     }
     .card--neptune .card__planet::before {
-        transform: var(--inclinaison) scale(1.2);
+        transform: var(--tilt) scale(1.2);
         border-color: grey;
         color: grey;
     }
