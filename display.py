@@ -37,7 +37,7 @@ def hex_to_rgba_str(hex, a):
 def sun_color(temperature):
     bounds = {
         'screen_min': 0,    'screen_max': 10,
-        'space_min': 575,     'space_max': 57_000,        
+        'space_min': 575,     'space_max': 57000,        
         }
     normed_r = lin_scale(temperature, bounds)
     panel = px.colors.sequential.Plasma
@@ -77,7 +77,7 @@ def coco(params):
         'screen_min': 200,    'screen_max': 400,
         'space_min': 200,     'space_max': 400,        
     }
-    size = lin_scale(300, size_bounds)
+    size = lin_scale(radius, size_bounds)
        
     p_color = planet_color(temperature)
     
@@ -86,7 +86,7 @@ def coco(params):
         'screen_min': -90,    'screen_max': -20,
         'space_min': -90,     'space_max': -20,        
     }
-    shadow = lin_scale(-70, shadow_bounds)
+    shadow = lin_scale(luminosity, shadow_bounds)
     
     s_color = sun_color(sun_temperature)
     
@@ -95,7 +95,7 @@ def coco(params):
         'screen_min': 20,    'screen_max': 90,
         'space_min': 20,     'space_max': 90,        
     }
-    s_intensity = lin_scale(50, s_intensity_bounds)
+    s_intensity = lin_scale(sun_distance, s_intensity_bounds)
         
     root_infos = ['<style>:root {',
         f'--image: url("{image}");',
@@ -115,14 +115,23 @@ def coco(params):
         
     return ' '.join(root_infos) + html_content
 
-params = {
+params1 = {
 'category': 'riri',
-'radius': 10,
-'sun_temperature': 10,
-'sun_distance': 10,
-'temperature': 10,
-'luminosity': 0.5,
+'radius': 100,
+'sun_temperature': 56000,
+'sun_distance': 70,
+'temperature': 500,
+'luminosity': -70,
 }
 
-print(coco(params))
+params2 = {
+'category': 'riri',
+'radius': 100,
+'sun_temperature': 56000,
+'sun_distance': 70,
+'temperature': 500,
+'luminosity': -70,
+}
+
+print(coco(params1))
     
